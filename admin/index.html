@@ -7,9 +7,24 @@
 <body>
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   <script>
-    // Force show Sign up link
+    // Αρχικοποίηση Netlify CMS με manual init
     window.CMS_MANUAL_INIT = true;
-    window.CMS.init();
+    CMS.init();
+
+    // Εμφάνιση Sign up link αν το Identity είναι Open
+    CMS.registerEventListener('preLogin', function() {
+      const container = document.querySelector('.nc-login-form');
+      if (container && !document.getElementById('signup-link')) {
+        const signup = document.createElement('a');
+        signup.href = '#';
+        signup.id = 'signup-link';
+        signup.style.display = 'block';
+        signup.style.marginTop = '10px';
+        signup.innerText = 'Δημιουργία Λογαριασμού (Sign Up)';
+        signup.onclick = function() { CMS.User.signup(); };
+        container.appendChild(signup);
+      }
+    });
   </script>
 </body>
 </html>
