@@ -1,0 +1,52 @@
+backend:
+  name: git-gateway
+  branch: main # άλλαξέ το σε master αν το repo σου έχει αυτό
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "coffees"
+    label: "Καφέδες"
+    folder: "data/coffees"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Όνομα", widget: "string" }
+      - { name: "description", label: "Περιγραφή", widget: "text", required: false }
+      - { name: "price", label: "Τιμή (€)", widget: "number", value_type: "float", step: 0.10 }
+      - { name: "image", label: "Εικόνα", widget: "image" }
+
+  - name: "drinks"
+    label: "Ροφήματα"
+    folder: "data/drinks"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Όνομα", widget: "string" }
+      - { name: "description", label: "Περιγραφή", widget: "text", required: false }
+      - { name: "price", label: "Τιμή (€)", widget: "number", value_type: "float", step: 0.10 }
+      - { name: "image", label: "Εικόνα", widget: "image" }
+
+  - name: "snacks"
+    label: "Σνακς"
+    folder: "data/snacks"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Όνομα", widget: "string" }
+      - { name: "description", label: "Περιγραφή", widget: "text", required: false }
+      - { name: "price", label: "Τιμή (€)", widget: "number", value_type: "float", step: 0.10 }
+      - { name: "image", label: "Εικόνα", widget: "image" }
+
+  - name: "settings"
+    label: "Ρυθμίσεις Site"
+    files:
+      - file: "data/settings/general.json"
+        label: "Γενικές Ρυθμίσεις"
+        name: "general"
+        fields:
+          - { name: "sitename", label: "Όνομα Καφετέριας", widget: "string" }
+          - { name: "logo", label: "Λογότυπο", widget: "image" }
+          - { name: "background", label: "Φόντο", widget: "image" }
+          - { name: "theme_color", label: "Χρώμα Θέματος", widget: "color" }
