@@ -8,8 +8,11 @@ public_folder: "/images/uploads"
 collections:
   - name: "products"
     label: "Products"
-    file: "content/products/products.json"
-    fields:
-      - { name: "title", label: "Title", widget: "string" }
-      - { name: "price", label: "Price", widget: "string" }
-      - { name: "image", label: "Image", widget: "image" }
+    files:
+      - file: "content/products/products.json"
+        label: "Products"
+        name: "products"
+        fields:
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "price", label: "Price", widget: "string" }
+          - { name: "image", label: "Image", widget: "image" }
